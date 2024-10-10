@@ -48,6 +48,12 @@ endmodule
 
 module DISPDRIVE(A, B, R, ovf, H7, H6, H5, H4, H2, H0);
 
+input [3:0] A, B, R;
+input ovf;
+output [6:0] H7, H6, H5, H4, H2, H0;
 
-
+ovfDisp overflow(ovf, H0);
+numDisp aDisp(A, H7, H6);
+numDisp bDisp(B, H5, H4);
+numDisp rDisp(R, H3, H2);
 endmodule
