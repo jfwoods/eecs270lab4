@@ -7,25 +7,16 @@ assign ouC = (a&b) | (a ^ b)&inC;
 endmodule
 
 
-module ADDER(V1, V2, OP, R, ovf);
+module ADDER(V1, V2, R, ovf);
 input [3:0] V1, V2;
-input [2:0] OP;
 output [3:0] R;
 output ovf;
-reg [3:0] A;
-reg [3:0] B;
-
-wire add, asubb, bsuba, absA, absB;
-assign add = (~OP[0] & ~OP[1] & ~OP[2]) | (~OP[0] & ~OP[1] & OP[2]);
-assign asubb = OP[0] & ~OP[1] & ~OP[2];
-assign bsuba = OP[0] & ~OP[1] & OP[2];
-assign absA = OP[2] & OP[1];
-assign absB = ~OP[2] & OP[1];
-
+wire [3:0] A;
+wire [3:0] B;
 
 wire c01, c12, c23; //first num is CIN, 2nd is COUT
 
-//Putting vals into registers
+//Putting vals into buses
 assign A = ~bsuba | add ? V1 : V2;
 assign B = ~bsuba | add ? V2 : V1;
 
@@ -34,10 +25,6 @@ fullAdder add1(A[1], B[1], c01, c12, R[1]);
 fullAdder add2(A[2], B[2], c12, c23, R[2]);
 fullAdder add3(A[3], B[3], c23, ovf, R[3]);
 
-initial begin
-    A = 4b'0000;
-    B = 4b'0000;
-end
 endmodule
 
 module absVal(A, R, error);
