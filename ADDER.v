@@ -38,6 +38,12 @@ fullAdder add0(A[0], C[0], ctrl, c01, R[0]);
 fullAdder add1(A[1], C[1], c01, c12, R[1]);
 fullAdder add2(A[2], C[2], c12, c23, R[2]);
 fullAdder add3(A[3], C[3], c23, ovf, R[3]);
+
+initial begin
+    A = 4b'0000;
+    B = 4b'0000;
+    C = 4b'0000;
+end
 endmodule
 
 module absVal(A, R, error);
