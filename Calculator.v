@@ -20,8 +20,10 @@ endmodule
 
 module Prefix(KEY, A, B, X, Y, cIN);
    input [2:0] KEY;
-   input [3:0] A, B;
-   output [3:0] X, Y;
+   input [3:0] A;
+   input [3:0] B;
+   output [3:0] X;
+   output [3:0] Y;
    output cIN;
 
    //opcode decoding
@@ -34,6 +36,5 @@ module Prefix(KEY, A, B, X, Y, cIN);
    assign sub = asubb | bsuba;
    assign abs = absA | absB;
 
-   
 
 endmodule

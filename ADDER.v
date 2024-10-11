@@ -12,7 +12,7 @@ module twosComp(X, R);
     wire [3:0] xInv;
     assign xInv[3:0] = ~X[3:0];
     wire ovf;
-    ADDER add1(X, 4b'0001, R, ovf);
+    ADDER add1(X, 0001, R, ovf);
 endmodule
 
 
